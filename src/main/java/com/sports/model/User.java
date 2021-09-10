@@ -19,10 +19,16 @@ public class User {
     private String mobile;
     private String profile;
     private boolean enabled = true;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Role> roles;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
-    @JsonIgnore
-    private Set<UserRole> userRoles =  new HashSet<>();
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public String getProfile() {
         return profile;
@@ -35,13 +41,7 @@ public class User {
     public User() {
     }
 
-    public Set<UserRole> getUserRoles() {
-        return userRoles;
-    }
 
-    public void setUserRoles(Set<UserRole> userRoles) {
-        this.userRoles = userRoles;
-    }
 
     public User(Long id, String email, String password, String firstName, String lastName, String mobile, String profile, boolean enabled) {
         this.id = id;

@@ -2,7 +2,6 @@ package com.sports;
 
 import com.sports.model.Role;
 import com.sports.model.User;
-import com.sports.model.UserRole;
 import com.sports.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -36,18 +35,27 @@ public class MyPredictionApplication implements CommandLineRunner{
 		user.setProfile("default.png");
 
 		Role role = new Role();
-		role.setRoleId(44L);
+		role.setRoleId(33L);
 		role.setRoleName("ADMIN");
 
-		Set<UserRole> userRolesSet = new HashSet<>();
+		Role role1 = new Role();
+		role1.setRoleId(22L);
+		role1.setRoleName("USER");
 
-		UserRole userRole = new UserRole();
-		userRole.setRole(role);
-		userRole.setUser(user);
-		userRolesSet.add(userRole);
+		role.setUser(user);
+		role1.setUser(user);
 
-		User user1= this.userService.createUser(user, userRolesSet);
-		System.out.println(user1.getMobile());
+		HashSet<Role> roles = new HashSet<>();
+		roles.add(role);
+		roles.add(role1);
+		user.setRoles(roles);
+
+		HashSet<Role> hs = new HashSet<>();
+		hs.add(role1);
+
+		User userx= this.userService.createUser(user);
+
+		System.out.println(userx.getMobile());
 
 	}
 }

@@ -1,7 +1,6 @@
 package com.sports.service.impl;
 
 import com.sports.model.User;
-import com.sports.model.UserRole;
 import com.sports.repo.RoleRepository;
 import com.sports.repo.UserRepository;
 import com.sports.service.UserService;
@@ -20,7 +19,7 @@ public class UserServiceImpl implements UserService {
     private RoleRepository roleRepository;
 
     @Override
-    public User createUser(User user, Set<UserRole> userRoles) throws Exception {
+    public User createUser(User user) throws Exception {
        User existingUser = this.userRepository.findByemail(user.getEmail());
 
        if(existingUser!=null)
@@ -29,11 +28,6 @@ public class UserServiceImpl implements UserService {
            throw new Exception("User arleary Exist");
        }else{
            //create user
-           for(UserRole userRole : userRoles)
-           {
-               roleRepository.save(userRole.getRole());
-           }
-           user.getUserRoles().addAll(userRoles);
            existingUser = this.userRepository.save(user);
        }
 
