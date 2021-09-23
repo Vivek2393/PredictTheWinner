@@ -27,24 +27,34 @@ public class MyPredictionApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		User user = new User();
-		user.setEmail("blogupvivek@gmail.com");
+		user.setEmail("vidhyalikecricket@yahoo.com");
 		user.setEnabled(true);
-		user.setFirstName("Vivek");
-		user.setMobile("7415102635");
+		user.setFirstName("Vidhya");
+		user.setMobile("8982158548");
 		user.setLastName("Mishra");
-		user.setPassword("hfskdhfkdsh");
-		user.setProfile("default.png");
+		user.setPassword("GJDFr897r9");
+		user.setProfile("photo.png");
 
 		Role role = new Role();
-		role.setRoleId(44L);
-		role.setRoleName("ADMIN");
+		role.setRoleId(33L);
+		role.setRoleName("USER");
+
+		Role role1 = new Role();
+		role1.setRoleId(44L);
+		role1.setRoleName("ADMIN");
 
 		Set<UserRole> userRolesSet = new HashSet<>();
 
 		UserRole userRole = new UserRole();
 		userRole.setRole(role);
 		userRole.setUser(user);
+
+		UserRole userRole1 = new UserRole();
+		userRole1.setRole(role1);
+		userRole1.setUser(user);
+
 		userRolesSet.add(userRole);
+		userRolesSet.add(userRole1);
 
 		User user1= this.userService.createUser(user, userRolesSet);
 		System.out.println(user1.getMobile());

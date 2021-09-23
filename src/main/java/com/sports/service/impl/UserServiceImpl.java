@@ -19,9 +19,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RoleRepository roleRepository;
 
+    //creating user
     @Override
     public User createUser(User user, Set<UserRole> userRoles) throws Exception {
-       User existingUser = this.userRepository.findByemail(user.getEmail());
+       User existingUser = this.userRepository.findByEmail(user.getEmail());
 
        if(existingUser!=null)
        {
