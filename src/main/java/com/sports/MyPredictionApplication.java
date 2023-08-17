@@ -27,11 +27,11 @@ public class MyPredictionApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		User user = new User();
-		user.setEmail("vidhyalikecricket@yahoo.com");
+		user.setEmail("xyz@yahoo.com");
 		user.setEnabled(true);
-		user.setFirstName("Vidhya");
-		user.setMobile("8982158548");
-		user.setLastName("Mishra");
+		user.setFirstName("Rahul");
+		user.setMobile("8985478596");
+		user.setLastName("Teja");
 		user.setPassword("GJDFr897r9");
 		user.setProfile("photo.png");
 

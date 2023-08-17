@@ -24,14 +24,12 @@ public class UserServiceImpl implements UserService {
     public User createUser(User user, Set<UserRole> userRoles) throws Exception {
        User existingUser = this.userRepository.findByEmail(user.getEmail());
 
-       if(existingUser!=null)
-       {
+       if(existingUser!=null) {
            System.out.println("User already Exist");
            throw new Exception("User arleary Exist");
        }else{
            //create user
-           for(UserRole userRole : userRoles)
-           {
+           for(UserRole userRole : userRoles) {
                roleRepository.save(userRole.getRole());
            }
            user.getUserRoles().addAll(userRoles);
