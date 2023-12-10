@@ -1,7 +1,9 @@
 package com.sports.controller;
 
+import com.sports.dto.UserWithRoles;
 import com.sports.model.Role;
 import com.sports.model.User;
+import com.sports.model.UserRole;
 import com.sports.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
@@ -19,19 +22,18 @@ public class UserController {
     @Autowired
     private UserService userService;
     //create USer
-  /*  @PostMapping("/")
-    public User createUser(@RequestBody User user) throws Exception {
+    @PostMapping("/signup")
+    public User createUser(@RequestBody UserWithRoles userRoles) throws Exception {
+        Set<UserRole> userRolesSet = new HashSet<>();
+        userRoles.getRolesOfUser().stream().forEach( role -> {
+            UserRole userRole = new UserRole();
+            userRole.setRole(role);
+            userRole.setUser(userRoles.getUser());
 
-        System.out.println("Request Recieved");
-
-        Role role =  new Role();
-        role.setRoleId(44L);
-        role.setRoleName("ADMIN");
-
-        user.setRoles(new HashSet<>(Arrays.asList(role)));
-
-        return this.userService.createUser(user);
-    }*/
+            userRolesSet.add(userRole);
+        });
+        return this.userService.createUser(userRoles.getUser(), userRolesSet);
+    }
 
 
 }

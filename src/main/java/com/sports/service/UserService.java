@@ -1,5 +1,6 @@
 package com.sports.service;
 
+import com.sports.model.Role;
 import com.sports.model.User;
 import com.sports.model.UserRole;
 

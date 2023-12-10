@@ -20,13 +20,12 @@ public class MyPredictionApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 
-
 		SpringApplication.run(MyPredictionApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		User user = new User();
+		/*User user = new User();
 		user.setEmail("xyz@yahoo.com");
 		user.setEnabled(true);
 		user.setFirstName("Rahul");
@@ -57,7 +56,7 @@ public class MyPredictionApplication implements CommandLineRunner{
 		userRolesSet.add(userRole1);
 
 		User user1= this.userService.createUser(user, userRolesSet);
-		System.out.println(user1.getMobile());
-
+		System.out.println(user1.getMobile());*/
+		System.out.println("On startup script");
 	}
 }
